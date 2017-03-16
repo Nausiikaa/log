@@ -12,7 +12,7 @@ public class Post
     private String nombreUsuario;
     private LocalDateTime timeStamp;
     private int meGustas;
-    private ArrayList<String> listaComentarios;
+    private int noMeGusta;
     /**
      * Constructor for objects of class Post
      */
@@ -21,7 +21,7 @@ public class Post
         nombreUsuario = autor;
         timeStamp = LocalDateTime.now();
         meGustas = 0;
-        listaComentarios = new ArrayList<>();
+        noMeGusta = 0;
     }
 
     public LocalDateTime getTimeStamp()
@@ -33,38 +33,29 @@ public class Post
     {
         meGustas++;
     }
-
-    public void comentar(String texto)
+    public void noMeGusta()
     {
-        listaComentarios.add(texto);
+        noMeGusta++;
     }
 
     public String getAutor()
     {
         return nombreUsuario;
     }
-
     public int getMeGustas()
     {
         return meGustas;
     }
-
+    public int getNoMeGustas()
+    {
+        return noMeGusta;
+    }
     public LocalDateTime getHoraPublicacion()
     {
         return timeStamp;
     }
-
-    public String getComentarios()
+    public String toString()
     {
-        String comentarios = null;
-        if(!listaComentarios.isEmpty()){
-            for(String comentario:listaComentarios){
-                comentarios = comentarios + comentario + "\n";
-            }
-        }
-        else{
-            comentarios = "No hay comentarios disponibles.";
-        }
-        return comentarios;
+        return null;
     }
 }

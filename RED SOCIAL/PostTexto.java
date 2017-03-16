@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PostTexto extends Post
+public class PostTexto extends PostConComentarios
 {
     // instance variables - replace the example below with your own
     private String textoMensaje;
@@ -29,6 +29,7 @@ public class PostTexto extends Post
         textoDevolver = textoDevolver + "Usuario " + getAutor() + "\n";
         textoDevolver = textoDevolver + getComentarios() + "\n";
         textoDevolver = textoDevolver + getMeGustas() + " me gusta";
+        textoDevolver = textoDevolver + getNoMeGustas() + " No me gusta";
         
         long segundosPasados = getHoraPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
         long minutosPasados = segundosPasados / 60;

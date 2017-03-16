@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.time.temporal.ChronoUnit;
-public class PostFoto extends Post
+public class PostFoto extends PostConComentarios
 {
     // instance variables - replace the example below with your own
     private String urlImagen;
@@ -30,6 +30,7 @@ public class PostFoto extends Post
         textoDevolver = textoDevolver + tituloImagen + "\n";
         textoDevolver = textoDevolver + urlImagen + "\n";
         textoDevolver = textoDevolver + getMeGustas() + " me gusta";
+        textoDevolver = textoDevolver + getNoMeGustas() + " No me gusta";
         
         long segundosPasados = getHoraPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
         long minutosPasados = segundosPasados / 60;
