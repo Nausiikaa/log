@@ -9,41 +9,61 @@ import java.time.temporal.ChronoUnit;
  */
 public class Muro
 {
-    
-    private ArrayList<PostTexto> mensajes;
-    private ArrayList<PostFoto> fotos;
 
+    private ArrayList<Post> entradas;
     /**
      * Constructor for objects of class Muro
      */
     public Muro()
     {
-       mensajes = new ArrayList<>();
-       fotos = new ArrayList<>();
+        entradas = new ArrayList<>();
     }
-    public void añadirEntradaTexto(PostTexto entradaTexto)
+
+    public void añadirEntrada(Post entrada)
     {
-        mensajes.add(entradaTexto);
+        entradas.add(entrada);
     }
-    public void añadirEntradaFoto(PostFoto entradaFoto)
-    {
-        fotos.add(entradaFoto);
-    }
+
     public String toString()
     {
         String cadenaDevolver = "";
-        for(PostTexto entrada : mensajes)
+        for(Post entrada : entradas)
         {
-            cadenaDevolver = cadenaDevolver + entrada+ "\n";
-        }
-        for(PostFoto entradaFoto : fotos)
-        {
-            cadenaDevolver = cadenaDevolver + entradaFoto+ "\n";
+            cadenaDevolver = cadenaDevolver + entrada + "\n";
         }
         return cadenaDevolver;
     }
+
     public void mostrar()
     {
         System.out.println(this);
+    }
+
+    public void verCantidadDatosPorEntrada()
+    {
+        for(Post entrada: entradas){
+            System.out.println(entrada.getCantidadDeDatosAsociadosALaEntrada());
+        }
+    }
+
+    public void mostrarDatosExclusivosEntradasFiltradas(String entradaAFiltrar,String autorPost)
+    {
+        for(Post entrada : entradas){
+            if(entradaAFiltrar == entrada.getClass().getSimpleName() && autorPost == entrada.getAutor())
+            {
+                switch (entrada.getClass().getSimpleName())
+                {
+                    case "PostTexto":
+                    ((PostTexto)entrada).mostrarDatosExclusivos();
+                    break;
+                    case "PostFoto":
+                    ((PostFoto)entrada).mostrarDatosExclusivos();
+                    break;
+                    case "PostUnionGrupo":
+                    ((PostUnionGrupo)entrada).mostrarDatosExclusivos();
+                    break;
+                }
+            }
+        }
     }
 }

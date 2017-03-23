@@ -6,6 +6,7 @@ public class PostFoto extends PostConComentarios
     // instance variables - replace the example below with your own
     private String urlImagen;
     private String tituloImagen;
+    private int cantidadDatosAsociados;
     /**
      * Constructor for objects of class PostTexto
      */
@@ -14,34 +15,39 @@ public class PostFoto extends PostConComentarios
         super(autor);
         urlImagen = url;
         tituloImagen = titulo;
+        cantidadDatosAsociados = 7;
     }
+
     public String getUrlImagen()
     {
         return urlImagen;
     }
+
     public String getTituloImagen()
     {
         return tituloImagen;
     }
+
     public String toString()
     {
-        String textoDevolver = "";
-        textoDevolver = textoDevolver + "Usuario " + getAutor() + "\n";
+        String textoDevolver = super.toString();
         textoDevolver = textoDevolver + tituloImagen + "\n";
         textoDevolver = textoDevolver + urlImagen + "\n";
-        textoDevolver = textoDevolver + getMeGustas() + " me gusta";
-        textoDevolver = textoDevolver + getNoMeGustas() + " No me gusta";
-        
-        long segundosPasados = getHoraPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
-        long minutosPasados = segundosPasados / 60;
-        long segundosRestantes = segundosPasados % 60;
-        if(minutosPasados == 0){
-            textoDevolver = textoDevolver + " Hace " + segundosPasados + " segundos.";
-        }
-        else{
-            textoDevolver = textoDevolver + " Hace " + minutosPasados + " minutos y " + segundosRestantes + " segundos.";
-        }
-        textoDevolver = textoDevolver + "\n" + getComentarios();
         return textoDevolver;
+    }
+
+    public void mostrar()
+    {
+        System.out.println(this);
+    }
+
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return cantidadDatosAsociados;
+    }
+
+    public void mostrarDatosExclusivos()
+    {
+        System.out.println(getTituloImagen() + "\n" + getUrlImagen());
     }
 }

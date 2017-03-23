@@ -10,32 +10,39 @@ import java.time.temporal.ChronoUnit;
 public class PostUnionGrupo extends Post
 {
     private String nombreGrupo;
-    
+    private int cantidadDatosAsociados;
+    private String tipoEntrada;
     public PostUnionGrupo(String autor,String grupo)
     {
         super(autor);
         nombreGrupo = grupo;
+        cantidadDatosAsociados = 5;
     }
-    public String getNombreGrupo()
+
+    public String toString()
+    {
+        String textoDevolver = super.toString();
+        textoDevolver = textoDevolver + " se ha unido al grupo " + nombreGrupo + "\n";
+        return textoDevolver;
+    }
+
+    public String getGrupo()
     {
         return nombreGrupo;
     }
-    public String toString()
+
+    public void mostrar()
     {
-        String textoDevolver = "";
-        textoDevolver = textoDevolver + "Usuario " + getAutor() + "\n";
-        textoDevolver = textoDevolver + getMeGustas() + " me gusta";
-        textoDevolver = textoDevolver + getNoMeGustas() + " No me gusta";
-        
-        long segundosPasados = getHoraPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
-        long minutosPasados = segundosPasados / 60;
-        long segundosRestantes = segundosPasados % 60;
-        if(minutosPasados == 0){
-            textoDevolver = textoDevolver + " Hace " + segundosPasados + " segundos.";
-        }
-        else{
-            textoDevolver = textoDevolver + " Hace " + minutosPasados + " minutos y " + segundosRestantes + " segundos.";
-        }
-        return textoDevolver;
+        System.out.println(this);
+    }
+
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return cantidadDatosAsociados;
+    }
+
+    public void mostrarDatosExclusivos()
+    {
+        System.out.println(getGrupo() + "\n");
     }
 }

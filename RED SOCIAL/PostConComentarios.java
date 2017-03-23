@@ -25,7 +25,8 @@ public class PostConComentarios extends Post
     {
         listaComentarios.add(texto);
     }
-        public String getComentarios()
+
+    public String getComentarios()
     {
         String comentarios = null;
         if(!listaComentarios.isEmpty()){
@@ -34,8 +35,14 @@ public class PostConComentarios extends Post
             }
         }
         else{
-            comentarios = "No hay comentarios disponibles.";
+            comentarios = "\n"+"No hay comentarios disponibles.";
         }
         return comentarios;
+    }
+    public String toString()
+    {
+        String textoDevolver = super.toString();
+        textoDevolver = textoDevolver + getComentarios() + "\n";
+        return textoDevolver;
     }
 }
