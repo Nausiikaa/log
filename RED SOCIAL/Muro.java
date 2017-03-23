@@ -49,7 +49,7 @@ public class Muro
     public void mostrarDatosExclusivosEntradasFiltradas(String entradaAFiltrar,String autorPost)
     {
         for(Post entrada : entradas){
-            if(entradaAFiltrar == entrada.getClass().getSimpleName() && autorPost == entrada.getAutor())
+            if(entradaAFiltrar == entrada.getClass().getSimpleName() && autorPost == entrada.getAutor() || autorPost == null && entradaAFiltrar == entrada.getClass().getSimpleName() || entradaAFiltrar == null && autorPost == entrada.getAutor() || entradaAFiltrar == null &&  autorPost == null)
             {
                 switch (entrada.getClass().getSimpleName())
                 {
